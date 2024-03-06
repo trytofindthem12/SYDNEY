@@ -1,3 +1,4 @@
+console.log(1);
 import * as React from 'react';
 
 import AttributeGrid from '../components/AttributeGrid';
