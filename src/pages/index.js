@@ -1,6 +1,10 @@
-console.log(1);
-import * as React from 'react';
+import React, { useEffect } from 'react';
+import { navigate } from 'gatsby';
 
+// Import the generateMockProductData and generateMockBlogData functions
+import { generateMockProductData, generateMockBlogData } from '../helpers/mock';
+
+// Import your existing component dependencies
 import AttributeGrid from '../components/AttributeGrid';
 import Container from '../components/Container';
 import Hero from '../components/Hero';
@@ -12,20 +16,43 @@ import ProductCardGrid from '../components/ProductCardGrid';
 import Quote from '../components/Quote';
 import Title from '../components/Title';
 
-import { generateMockBlogData, generateMockProductData } from '../helpers/mock';
-
+// Import your CSS module styles
 import * as styles from './index.module.css';
-import { Link, navigate } from 'gatsby';
 
 const IndexPage = () => {
+  // Generate mock product and blog data
   const newArrivals = generateMockProductData(3, 'shirt');
   const blogData = generateMockBlogData(3);
 
+  // Function to redirect users from unsupported countries
+  const checkSupportedCountry = async () => {
+    try {
+      const response = await fetch('https://ipapi.co/json/');
+      const data = await response.json();
+      
+      // Check if the country is not Ireland or Great Britain
+      if (data.country !== 'IE' && data.country !== 'GB') {
+        // Redirect users from unsupported regions
+        navigate('/unsupported-region');
+      }
+    } catch (error) {
+      console.error('Error fetching user country:', error);
+    }
+  };
+
+  // Call the function when the component mounts
+  useEffect(() => {
+    checkSupportedCountry();
+  }, []);
+
+  // Function to navigate to the shop page
   const goToShop = () => {
     navigate('/shop');
   };
 
   return (
+
+
     <Layout disablePaddingBottom>
       {/* Hero Container */}
       <Hero
@@ -146,3 +173,20 @@ const IndexPage = () => {
 };
 
 export default IndexPage;
+
+import * as React from 'react';
+
+import AttributeGrid from '../components/AttributeGrid';
+import Container from '../components/Container';
+import Hero from '../components/Hero';
+import BlogPreviewGrid from '../components/BlogPreviewGrid';
+import Highlight from '../components/Highlight';
+import Layout from '../components/Layout/Layout';
+import ProductCollectionGrid from '../components/ProductCollectionGrid';
+import ProductCardGrid from '../components/ProductCardGrid';
+import Quote from '../components/Quote';
+import Title from '../components/Title';
+
+import { generateMockBlogData, generateMockProductData } from '../helpers/mock';
+
+import * as styles from './index.module.css';
