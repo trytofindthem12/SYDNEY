@@ -1,3 +1,4 @@
+console.log(1);
 import { Link } from 'gatsby';
 import React from 'react';
 import * as styles from './Title.module.css';
