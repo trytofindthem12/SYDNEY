@@ -11,7 +11,6 @@ import { navigate } from 'gatsby';
 
 const OrderPage = (props) => {
   if (isAuth() === false) {
-    console.log(1);
     navigate('/login');
   }
 
