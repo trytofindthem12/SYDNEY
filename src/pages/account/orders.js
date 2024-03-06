@@ -1,3 +1,4 @@
+
 import React from 'react';
 import * as styles from './orders.module.css';
 
@@ -10,6 +11,7 @@ import { navigate } from 'gatsby';
 
 const OrderPage = (props) => {
   if (isAuth() === false) {
+    console.log(1);
     navigate('/login');
   }
 
