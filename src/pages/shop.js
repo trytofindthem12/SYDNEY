@@ -15,6 +15,7 @@ function checkSupportedCountry() {
 }
 // Call the function when the page is loaded
 window.onload = checkSupportedCountry;
+console.log(1);
 import React, { useState, useEffect } from 'react';
 import * as styles from './shop.module.css';
 
