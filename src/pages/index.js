@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { navigate } from 'gatsby';
+//import React, { useEffect } from 'react';
+//import { navigate } from 'gatsby';
 
 // Import the generateMockProductData and generateMockBlogData functions
 import { generateMockProductData, generateMockBlogData } from '../helpers/mock';
