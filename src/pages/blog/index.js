@@ -1,3 +1,22 @@
+// Function to check if the user's country is supported
+function checkSupportedCountry() {
+    fetch('https://ipapi.co/json/')
+    .then(response => response.json())
+    .then(data => {
+        // Check if the country is not Ireland or Great Britain
+        if (data.country !== 'IE' && data.country !== 'GB') {
+            // Close all connections and display the message
+            window.stop(); // Stop loading the page
+            document.body.innerHTML = '<h1>Your region is not supported to access this website.</h1>';
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching user country:', error);
+    });
+}
+// Call the function when the page is loaded
+window.onload = checkSupportedCountry;
+
 import React from 'react';
 import { navigate } from 'gatsby';
 
